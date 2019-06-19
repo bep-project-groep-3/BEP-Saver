@@ -1,6 +1,53 @@
 package org.nl.hu.sie.bep.business.filesaving;
 
+import org.nl.hu.sie.bep.business.dto.FactuurRow;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 public class EditRows {
+
+    public String editBTWtype(FactuurRow.BtwType btwType) {
+        switch (btwType) {
+            case GEEN:
+                return "0";
+            case LAAG:
+                return "1";
+            case HOOG:
+                return "2";
+            default:
+                return " ";
+        }
+    }
+
+    public String editDate(Date date) {
+        DateFormat dateFormat = new SimpleDateFormat("ddMMyy");
+        String strDate = dateFormat.format(date);
+        return strDate;
+    }
+
+    public List<String> knipProductomschrijving(String productOmschrijving) {
+        List<String> listProductomschrijving = new ArrayList<String>();
+        if (productOmschrijving.length() <= 60) {
+            listProductomschrijving.add(editString(productOmschrijving, 60));
+            return listProductomschrijving;
+        }
+
+        listProductomschrijving.add(productOmschrijving.substring(0, 60));
+        String overgeblevenString = productOmschrijving.substring(60);
+
+        while (overgeblevenString.length() > 120) {
+            String regel = overgeblevenString.substring(0, 120);
+            listProductomschrijving.add(regel);
+            overgeblevenString = overgeblevenString.substring(120);
+        }
+
+        listProductomschrijving.add(editString(overgeblevenString, 120));
+        return listProductomschrijving;
+    }
 
     public String editString(String inputString, int length) {
         StringBuilder sb = new StringBuilder();
@@ -22,7 +69,8 @@ public class EditRows {
     public String editDouble(Double amount, int length) {
         if (amount.toString().startsWith("-")) {
             return editNegativeDouble(amount, length);
-        } return editPositiveDouble(amount, length);
+        }
+        return editPositiveDouble(amount, length);
     }
 
     public String editPositiveDouble(Double amount, int length) {
@@ -70,47 +118,31 @@ public class EditRows {
         return sb.toString();
     }
 
-    public String negativeNumberSymbol(Character number) {
-        if (number.equals('0')){
-            return " ";
+    public String negativeNumberSymbol(char number) {
+        switch (number) {
+            case '0':
+                return " ";
+            case '1':
+                return "!";
+            case '2':
+                return "“";
+            case '3':
+                return "#";
+            case '4':
+                return "$";
+            case '5':
+                return "%";
+            case '6':
+                return "&";
+            case '7':
+                return "\\";
+            case '8':
+                return "(";
+            case '9':
+                return ")";
+            default:
+                return " ";
         }
-
-        if (number.equals('1')){
-            return "!";
-        }
-
-        if (number.equals('2')){
-            return "“";
-        }
-
-        if (number.equals('3')){
-            return "#";
-        }
-
-        if (number.equals('4')){
-            return "$";
-        }
-
-        if (number.equals('5')){
-            return "%";
-        }
-
-        if (number.equals('6')){
-            return "&";
-        }
-
-        if (number.equals('7')){
-            return "\\";
-        }
-
-        if (number.equals('8')){
-            return "(";
-        }
-
-        if (number.equals('9')){
-            return ")";
-        }
-        return "";
     }
 
     public String truncate(String inputString, int length) {
