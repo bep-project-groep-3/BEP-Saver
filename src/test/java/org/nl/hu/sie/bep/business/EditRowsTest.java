@@ -1,6 +1,7 @@
 package org.nl.hu.sie.bep.business;
 
 import org.junit.jupiter.api.Test;
+import org.nl.hu.sie.bep.business.dto.FactuurRow;
 import org.nl.hu.sie.bep.business.filesaving.EditRows;
 
 import java.util.Arrays;
@@ -33,9 +34,18 @@ public class EditRowsTest {
         String oneHundredTwentyCharacters = sixtyCharacters + sixtyCharacters;
         String twoHundredCharacters = sixtyCharacters + sixtyCharacters + sixtyCharacters + "!!!!!!!!!!!!!!!!!!!!";
 
+        assertEquals(Arrays.asList("TienletterTienletterTienletterTienletterTienletter          "), editRows.knipProductomschrijving("TienletterTienletterTienletterTienletterTienletter"));
         assertEquals(Arrays.asList(sixtyCharacters), editRows.knipProductomschrijving(sixtyCharacters));
-        assertEquals(Arrays.asList(sixtyCharacters, "!"), editRows.knipProductomschrijving(sixtyOneCharacters));
-        assertEquals(Arrays.asList(sixtyCharacters, sixtyCharacters), editRows.knipProductomschrijving(oneHundredTwentyCharacters));
-        assertEquals(Arrays.asList(sixtyCharacters, oneHundredTwentyCharacters, "!!!!!!!!!!!!!!!!!!!!"), editRows.knipProductomschrijving(twoHundredCharacters));
+        assertEquals(Arrays.asList(sixtyCharacters, "!                                                                                                                       "), editRows.knipProductomschrijving(sixtyOneCharacters));
+        assertEquals(Arrays.asList(sixtyCharacters, sixtyCharacters + "                                                            "), editRows.knipProductomschrijving(oneHundredTwentyCharacters));
+        assertEquals(Arrays.asList(sixtyCharacters, oneHundredTwentyCharacters), editRows.knipProductomschrijving(sixtyCharacters + oneHundredTwentyCharacters));
+        assertEquals(Arrays.asList(sixtyCharacters, oneHundredTwentyCharacters, "!!!!!!!!!!!!!!!!!!!!                                                                                                    "), editRows.knipProductomschrijving(twoHundredCharacters));
+
+        FactuurRow.BtwType geen = FactuurRow.BtwType.GEEN;
+
+        assertEquals("0", editRows.editBTWtype(FactuurRow.BtwType.GEEN));
+        assertEquals("1", editRows.editBTWtype(FactuurRow.BtwType.LAAG));
+        assertEquals("2", editRows.editBTWtype(FactuurRow.BtwType.HOOG));
+
     }
 }
