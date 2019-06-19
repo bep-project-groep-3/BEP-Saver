@@ -3,7 +3,10 @@ package org.nl.hu.sie.bep.business;
 import org.junit.jupiter.api.Test;
 import org.nl.hu.sie.bep.business.filesaving.EditRows;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.Arrays;
+import java.util.Date;
+
+import static org.junit.Assert.assertEquals;
 
 public class EditRowsTest {
 
@@ -17,13 +20,22 @@ public class EditRowsTest {
         assertEquals("Hoi", editRows.truncate("Hoiiiiiiii", 3));
         assertEquals("00501", editRows.editDouble(5.01, 5));
 
-
         assertEquals("%0501", editRows.editDouble(-505.0100, 5));
         assertEquals(" 000050501", editRows.editDouble(-505.01, 10));
         assertEquals("%05", editRows.editDouble(-505.01, 3));
 
+        Date date = new Date();
+
+        assertEquals("190619", editRows.editDate(date));
+
+        String sixtyCharacters = "Hallo, dit is een string van 60 karakters. Lang zeg…!!!!!!!!";
+        String sixtyOneCharacters = "Hallo, dit is een string van 60 karakters. Lang zeg…!!!!!!!!" + "!";
+        String oneHundredTwentyCharacters = sixtyCharacters + sixtyCharacters;
+        String twoHundredCharacters = sixtyCharacters + sixtyCharacters + sixtyCharacters + "!!!!!!!!!!!!!!!!!!!!";
+
+        assertEquals(Arrays.asList(sixtyCharacters), editRows.knipProductomschrijving(sixtyCharacters));
+        assertEquals(Arrays.asList(sixtyCharacters, "!"), editRows.knipProductomschrijving(sixtyOneCharacters));
+        assertEquals(Arrays.asList(sixtyCharacters, sixtyCharacters), editRows.knipProductomschrijving(oneHundredTwentyCharacters));
+        assertEquals(Arrays.asList(sixtyCharacters, oneHundredTwentyCharacters, "!!!!!!!!!!!!!!!!!!!!"), editRows.knipProductomschrijving(twoHundredCharacters));
     }
-
-
-
 }
