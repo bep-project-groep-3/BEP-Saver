@@ -1,6 +1,6 @@
 package org.nl.hu.sie.bep.business.filesaving;
 
-import org.nl.hu.sie.bep.business.dto.FactuurRow;
+import org.nl.hu.sie.bep.business.dto.FactuurRegelRow;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -10,7 +10,7 @@ import java.util.List;
 
 public class EditRows {
 
-    public String editBTWtype(FactuurRow.BtwType btwType) {
+    public static String editBTWtype(FactuurRegelRow.BtwType btwType) {
         switch (btwType) {
             case GEEN:
                 return "0";
@@ -23,13 +23,13 @@ public class EditRows {
         }
     }
 
-    public String editDate(Date date) {
+    public static String editDate(Date date) {
         DateFormat dateFormat = new SimpleDateFormat("ddMMyy");
         String strDate = dateFormat.format(date);
         return strDate;
     }
 
-    public List<String> knipProductomschrijving(String productOmschrijving) {
+    public static List<String> knipProductomschrijving(String productOmschrijving) {
         List<String> listProductomschrijving = new ArrayList<String>();
         if (productOmschrijving.length() <= 60) {
             listProductomschrijving.add(editString(productOmschrijving, 60));
@@ -49,7 +49,7 @@ public class EditRows {
         return listProductomschrijving;
     }
 
-    public String editString(String inputString, int length) {
+    public static String editString(String inputString, int length) {
         StringBuilder sb = new StringBuilder();
         if (inputString.length() > length) {
             return truncate(inputString, length);
@@ -66,14 +66,14 @@ public class EditRows {
         return sb.toString();
     }
 
-    public String editDouble(Double amount, int length) {
+    public static String editDouble(Double amount, int length) {
         if (amount.toString().startsWith("-")) {
             return editNegativeDouble(amount, length);
         }
         return editPositiveDouble(amount, length);
     }
 
-    public String editPositiveDouble(Double amount, int length) {
+    public static String editPositiveDouble(Double amount, int length) {
         String amountWithoutComma = Double.toString(amount).replace(".", "");
         StringBuilder sb = new StringBuilder();
 
@@ -92,7 +92,7 @@ public class EditRows {
         return sb.toString();
     }
 
-    public String editNegativeDouble(Double amount, int length) {
+    public static String editNegativeDouble(Double amount, int length) {
         String withoutCommaNegativeSign = Double.toString(amount).replace(".", "").replace("-", "");
 
         StringBuilder sb = new StringBuilder();
@@ -118,7 +118,7 @@ public class EditRows {
         return sb.toString();
     }
 
-    public String negativeNumberSymbol(char number) {
+    public static String negativeNumberSymbol(char number) {
         switch (number) {
             case '0':
                 return " ";
@@ -145,7 +145,7 @@ public class EditRows {
         }
     }
 
-    public String truncate(String inputString, int length) {
+    public static String truncate(String inputString, int length) {
         return inputString.substring(0, length);
     }
 }

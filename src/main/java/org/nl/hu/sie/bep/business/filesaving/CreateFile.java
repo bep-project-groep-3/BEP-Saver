@@ -18,7 +18,13 @@ public class CreateFile {
     }
 
     public static void main(String[] args) throws FileCreateException {
-        String maand = getMonthName(8);
+
+        if (args.length == 0) {
+            System.out.println("Er is geen maand ingevuld");
+            return;
+        }
+
+        String maand = getMonthName(Integer.parseInt(args[0]));
 
         try {
             File file = new File("C:\\Users\\Brigitte\\Desktop\\Files\\factuurgegevens " + maand + ".txt");
@@ -28,16 +34,8 @@ public class CreateFile {
             }
 
             try (PrintWriter pw = new PrintWriter(file)) {
-                pw.println("B");
-                pw.println("K");
-                pw.println("F");
-                pw.println("R");
-                pw.println("T");
-                pw.println("B");
-                pw.println("K");
-                pw.println("F");
-                pw.println("R");
-                pw.println("T");
+
+                pw.println(CreateMockClasses.createMockClasses().getText());
                 pw.flush();
             }
 

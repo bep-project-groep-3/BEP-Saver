@@ -1,9 +1,11 @@
 package org.nl.hu.sie.bep.business;
 
 import org.junit.jupiter.api.Test;
-import org.nl.hu.sie.bep.business.dto.FactuurRow;
+import org.nl.hu.sie.bep.business.dto.FactuurRegelRow;
 import org.nl.hu.sie.bep.business.filesaving.EditRows;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -12,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 public class EditRowsTest {
 
     @Test
-    public void test() {
+    public void test() throws ParseException {
 
         EditRows editRows = new EditRows();
 
@@ -24,10 +26,14 @@ public class EditRowsTest {
         assertEquals("%0501", editRows.editDouble(-505.0100, 5));
         assertEquals(" 000050501", editRows.editDouble(-505.01, 10));
         assertEquals("%05", editRows.editDouble(-505.01, 3));
+        assertEquals("00100", editRows.editDouble(10.0, 5));
+        assertEquals("0000121", editRows.editDouble(12.10, 7));
 
-        Date date = new Date();
 
-        assertEquals("190619", editRows.editDate(date));
+        SimpleDateFormat format = new SimpleDateFormat("ddMMyy");
+        Date date = format.parse("200619");
+
+        assertEquals("200619", editRows.editDate(date));
 
         String sixtyCharacters = "Hallo, dit is een string van 60 karakters. Lang zeg…!!!!!!!!";
         String sixtyOneCharacters = "Hallo, dit is een string van 60 karakters. Lang zeg…!!!!!!!!" + "!";
@@ -41,11 +47,9 @@ public class EditRowsTest {
         assertEquals(Arrays.asList(sixtyCharacters, oneHundredTwentyCharacters), editRows.knipProductomschrijving(sixtyCharacters + oneHundredTwentyCharacters));
         assertEquals(Arrays.asList(sixtyCharacters, oneHundredTwentyCharacters, "!!!!!!!!!!!!!!!!!!!!                                                                                                    "), editRows.knipProductomschrijving(twoHundredCharacters));
 
-        FactuurRow.BtwType geen = FactuurRow.BtwType.GEEN;
-
-        assertEquals("0", editRows.editBTWtype(FactuurRow.BtwType.GEEN));
-        assertEquals("1", editRows.editBTWtype(FactuurRow.BtwType.LAAG));
-        assertEquals("2", editRows.editBTWtype(FactuurRow.BtwType.HOOG));
+        assertEquals("0", editRows.editBTWtype(FactuurRegelRow.BtwType.GEEN));
+        assertEquals("1", editRows.editBTWtype(FactuurRegelRow.BtwType.LAAG));
+        assertEquals("2", editRows.editBTWtype(FactuurRegelRow.BtwType.HOOG));
 
     }
 }

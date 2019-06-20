@@ -4,7 +4,7 @@ import org.nl.hu.sie.bep.business.filesaving.EditRows;
 
 import java.util.List;
 
-public class BedrijfRow extends Row{
+public class BedrijfRow extends Row {
     private String bedrijfsNaam;
     private String straat;
     private String straatNummer;
@@ -15,7 +15,8 @@ public class BedrijfRow extends Row{
     private String bic;
     private List<KlantRow> klanten;
 
-    public BedrijfRow(RowType type, String bedrijfsNaam, String straat, String straatNummer, String postcode, String plaats, String btwcode, String iban, String bic, List<KlantRow> klanten) {
+
+    public BedrijfRow(String bedrijfsNaam, String straat, String straatNummer, String postcode, String plaats, String btwcode, String iban, String bic, List<KlantRow> klanten) {
         super(RowType.BEDRIJF);
         this.bedrijfsNaam = bedrijfsNaam;
         this.straat = straat;
@@ -30,7 +31,10 @@ public class BedrijfRow extends Row{
 
     @Override
     public String getText() {
-        // getText methode van klant oproepen
-        return "B" + EditRows.editString(bedrijfsNaam, 60) + EditRows.editString(straat, 60) + EditRows.editString(straatNummer, 10) + EditRows.editString(postcode, 6) + EditRows.editString(plaats, 20) + EditRows.editString(btwcode, 13) + EditRows.editString(iban, 64) + EditRows.editString(bic, 10);
+        String bedrijfString = "B" + EditRows.editString(bedrijfsNaam, 60) + EditRows.editString(straat, 60) + EditRows.editString(straatNummer, 10) + EditRows.editString(postcode, 6) + EditRows.editString(plaats, 20) + EditRows.editString(btwcode, 13) + EditRows.editString(iban, 64) + EditRows.editString(bic, 10) + "\n";
+        for (KlantRow klantRow : klanten) {
+            bedrijfString += klantRow.getText();
+        }
+        return bedrijfString;
     }
 }

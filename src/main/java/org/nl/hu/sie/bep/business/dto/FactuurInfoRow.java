@@ -10,15 +10,23 @@ public class FactuurInfoRow extends Row{
     private String factuurNummer;
     private List<FactuurRegelRow> factuurRegels;
 
-    public FactuurInfoRow(RowType type, Date factuurdatum, String factuurNummer, List<FactuurRegelRow> factuurRegels) {
+    public FactuurInfoRow(Date factuurdatum, String factuurNummer, List<FactuurRegelRow> factuurRegels) {
         super(RowType.FACTUUR);
         this.factuurdatum = factuurdatum;
         this.factuurNummer = factuurNummer;
         this.factuurRegels = factuurRegels;
     }
 
+    public List<FactuurRegelRow> getFactuurRegels() {
+        return factuurRegels;
+    }
+
     @Override
     public String getText() {
-        return "F" + EditRows.editDate(factuurdatum) + EditRows.editString(factuurNummer, 10);
+        String factuurInfoString = "F" + EditRows.editDate(factuurdatum) + EditRows.editString(factuurNummer, 10) + "\n";
+        for (FactuurRegelRow factuurRegelRow : factuurRegels){
+            factuurInfoString += factuurRegelRow.getText();
+        }
+        return factuurInfoString;
     }
 }

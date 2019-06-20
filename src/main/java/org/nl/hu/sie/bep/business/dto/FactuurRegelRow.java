@@ -2,6 +2,7 @@ package org.nl.hu.sie.bep.business.dto;
 
 import org.nl.hu.sie.bep.business.filesaving.EditRows;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class FactuurRegelRow extends Row {
         HOOG
     }
 
-    public FactuurRegelRow(RowType type, String productOmschrijving, double aantal, double prijsPerStuk, BtwType btwType, Date regelDatum, String eenheid) {
+    public FactuurRegelRow(String productOmschrijving, double aantal, double prijsPerStuk, BtwType btwType, Date regelDatum, String eenheid) {
         super(RowType.FACTUURREGEL);
         this.productOmschrijving = productOmschrijving;
         this.aantal = aantal;
@@ -31,11 +32,14 @@ public class FactuurRegelRow extends Row {
 
     @Override
     public String getText() {
+        String factuurRegelString = "R" + EditRows.editString(productOmschrijving, 60) + EditRows.editDouble(aantal, 5) + EditRows.editDouble(prijsPerStuk, 7) + EditRows.editBTWtype(btwType) + EditRows.editDate(regelDatum) + EditRows.editString(eenheid, 6) + "\n";
+
         if (productOmschrijving.length() <= 60) {
-            return "R" + EditRows.editString(productOmschrijving, 60) + EditRows.editDouble(aantal, 5) + EditRows.editDouble(prijsPerStuk, 7) + EditRows.editBTWtype(btwType) + EditRows.editDate(regelDatum) + EditRows.editString(eenheid, 6);
-        }  // Als lengte groter is dan 60 dan wil ik alleen hierin de eerste string van 60 karakters hebben en de rest in TekstRow
-        List<String> productOmschrijvingStrings = EditRows.knipProductomschrijving(productOmschrijving);
-        // GetText van textrows
-        return "R" + productOmschrijvingStrings.get(0) + EditRows.editDouble(aantal, 5) + EditRows.editDouble(prijsPerStuk, 7) + EditRows.editBTWtype(btwType) + EditRows.editDate(regelDatum) + EditRows.editString(eenheid, 6);
+            return factuurRegelString;
+        }
+
+        TekstRow tekstRow = new TekstRow(productOmschrijving);
+        factuurRegelString += tekstRow.getText();
+        return factuurRegelString;
     }
 }
