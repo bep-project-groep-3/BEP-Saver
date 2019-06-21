@@ -30,14 +30,14 @@ public class FactuurRegelRow implements Row {
 
     @Override
     public String getText() {
-        String factuurRegelString = "R" + EditRows.editString(productOmschrijving, 60) + EditRows.editDouble(aantal, 5) + EditRows.editDouble(prijsPerStuk, 7) + EditRows.editBTWtype(btwType) + EditRows.editDate(regelDatum) + EditRows.editString(eenheid, 6) + "\n";
-
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("R" + EditRows.editString(productOmschrijving, 60) + EditRows.editDouble(aantal, 5) + EditRows.editDouble(prijsPerStuk, 7) + EditRows.editBTWtype(btwType) + EditRows.editDate(regelDatum) + EditRows.editString(eenheid, 6) + "\n");
         if (productOmschrijving.length() <= 60) {
-            return factuurRegelString;
+            return stringBuilder.toString();
         }
 
         TekstRow tekstRow = new TekstRow(productOmschrijving);
-        factuurRegelString += tekstRow.getText();
-        return factuurRegelString;
+        stringBuilder.append(tekstRow.getText());
+        return stringBuilder.toString();
     }
 }

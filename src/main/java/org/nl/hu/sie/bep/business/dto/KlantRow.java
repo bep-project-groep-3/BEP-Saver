@@ -42,25 +42,25 @@ public class KlantRow implements Row {
 
     @Override
     public String getText() {
-        StringBuilder bld = new StringBuilder();
-        bld.append("K");
-        bld.append(EditRows.editString(bedrijfsnaam, 40));
-        bld.append(EditRows.editString(aanhef, 6));
-        bld.append(EditRows.editString(voornaam, 20));
-        bld.append(EditRows.editString(tussenvoegsel, 7));
-        bld.append(EditRows.editString(achternaam, 40));
-        bld.append(EditRows.editString(straat, 60));
-        bld.append(EditRows.editString(huisnummer, 10));
-        bld.append(EditRows.editString(postcode, 6));
-        bld.append(EditRows.editString(plaats, 20));
-        bld.append(EditRows.editString(btwNummer, 13));
-        bld.append(EditRows.editString(iban, 64));
-        bld.append(EditRows.editString(bic, 10));
-        bld.append("\n");
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("K");
+        stringBuilder.append(EditRows.editString(bedrijfsnaam, 40));
+        stringBuilder.append(EditRows.editString(aanhef, 6));
+        stringBuilder.append(EditRows.editString(voornaam, 20));
+        stringBuilder.append(EditRows.editString(tussenvoegsel, 7));
+        stringBuilder.append(EditRows.editString(achternaam, 40));
+        stringBuilder.append(EditRows.editString(straat, 60));
+        stringBuilder.append(EditRows.editString(huisnummer, 10));
+        stringBuilder.append(EditRows.editString(postcode, 6));
+        stringBuilder.append(EditRows.editString(plaats, 20));
+        stringBuilder.append(EditRows.editString(btwNummer, 13));
+        stringBuilder.append(EditRows.editString(iban, 64));
+        stringBuilder.append(EditRows.editString(bic, 10));
+        stringBuilder.append("\n");
 
         for (FactuurInfoRow factuurInfoRow : facturen) {
-            bld.append(factuurInfoRow.getText());
+            stringBuilder.append(factuurInfoRow.getText());
         }
-        return bld.toString();
+        return stringBuilder.toString();
     }
 }

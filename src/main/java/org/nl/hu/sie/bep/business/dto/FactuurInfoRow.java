@@ -23,15 +23,15 @@ public class FactuurInfoRow implements Row{
 
     @Override
     public String getText() {
-        StringBuilder bld = new StringBuilder();
-        bld.append("F");
-        bld.append(EditRows.editDate(factuurdatum));
-        bld.append(EditRows.editString(factuurNummer, 10));
-        bld.append("\n");
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("F");
+        stringBuilder.append(EditRows.editDate(factuurdatum));
+        stringBuilder.append(EditRows.editString(factuurNummer, 10));
+        stringBuilder.append("\n");
 
         for (FactuurRegelRow factuurRegelRow : factuurRegels){
-            bld.append(factuurRegelRow.getText());
+            stringBuilder.append(factuurRegelRow.getText());
         }
-        return bld.toString();
+        return stringBuilder.toString();
     }
 }

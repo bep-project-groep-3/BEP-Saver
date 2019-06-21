@@ -31,21 +31,21 @@ public class BedrijfRow implements Row {
 
     @Override
     public String getText() {
-        StringBuilder bld = new StringBuilder();
-        bld.append("B");
-        bld.append(EditRows.editString(bedrijfsNaam, 60));
-        bld.append(EditRows.editString(straat, 60));
-        bld.append(EditRows.editString(straatNummer, 10));
-        bld.append(EditRows.editString(postcode, 6));
-        bld.append(EditRows.editString(plaats, 20));
-        bld.append(EditRows.editString(btwcode, 13));
-        bld.append(EditRows.editString(iban, 64));
-        bld.append(EditRows.editString(bic, 10));
-        bld.append("\n");
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("B");
+        stringBuilder.append(EditRows.editString(bedrijfsNaam, 60));
+        stringBuilder.append(EditRows.editString(straat, 60));
+        stringBuilder.append(EditRows.editString(straatNummer, 10));
+        stringBuilder.append(EditRows.editString(postcode, 6));
+        stringBuilder.append(EditRows.editString(plaats, 20));
+        stringBuilder.append(EditRows.editString(btwcode, 13));
+        stringBuilder.append(EditRows.editString(iban, 64));
+        stringBuilder.append(EditRows.editString(bic, 10));
+        stringBuilder.append("\n");
 
         for (KlantRow klantRow : klanten) {
-            bld.append(klantRow.getText());
+            stringBuilder.append(klantRow.getText());
         }
-        return bld.toString();
+        return stringBuilder.toString();
     }
 }

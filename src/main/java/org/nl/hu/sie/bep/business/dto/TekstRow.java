@@ -23,13 +23,13 @@ public class TekstRow implements Row {
             TekstRow row = new TekstRow(productOmschrijvingStrings.get(i));
             regels.add(addMultipleTextRows(row));
         }
-        StringBuilder bld = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
 
         for (String string : regels) {
 
-            bld.append(string);
+            stringBuilder.append(string);
         }
-        return bld.toString();
+        return stringBuilder.toString();
     }
 
     private String addMultipleTextRows(TekstRow row) {
