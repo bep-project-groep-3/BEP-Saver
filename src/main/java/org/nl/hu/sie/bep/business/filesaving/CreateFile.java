@@ -17,7 +17,7 @@ public class CreateFile {
         return new DateFormatSymbols().getMonths()[monthIndex - 1];
     }
 
-    public static void main(String[] args) throws FileCreateException {
+    public static void createFile(String[] args) throws FileCreateException{
         if (args.length == 0) {
             System.out.println("Er is geen maand ingevuld");
             return;
@@ -45,5 +45,9 @@ public class CreateFile {
                 IOException e) {
             throw new FileCreateException("Lukt niet om een bestand aan te maken", e);
         }
+    }
+
+    public static void main(String[] args) throws FileCreateException {
+        createFile(args);
     }
 }

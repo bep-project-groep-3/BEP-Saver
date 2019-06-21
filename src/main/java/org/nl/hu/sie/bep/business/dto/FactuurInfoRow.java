@@ -17,10 +17,6 @@ public class FactuurInfoRow implements Row{
         this.factuurRegels = factuurRegels;
     }
 
-    public List<FactuurRegelRow> getFactuurRegels() {
-        return factuurRegels;
-    }
-
     @Override
     public String getText() {
         StringBuilder stringBuilder = new StringBuilder();

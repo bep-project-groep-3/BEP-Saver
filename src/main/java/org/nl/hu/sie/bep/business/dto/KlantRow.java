@@ -36,10 +36,6 @@ public class KlantRow implements Row {
         this.facturen = facturen;
     }
 
-    public List<FactuurInfoRow> getFacturen() {
-        return facturen;
-    }
-
     @Override
     public String getText() {
         StringBuilder stringBuilder = new StringBuilder();

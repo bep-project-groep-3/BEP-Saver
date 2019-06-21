@@ -119,8 +119,6 @@ public class EditRows {
 
     public static String negativeNumberSymbol(char number) {
         switch (number) {
-            case '0':
-                return " ";
             case '1':
                 return "!";
             case '2':
