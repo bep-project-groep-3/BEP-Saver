@@ -2,11 +2,9 @@ package org.nl.hu.sie.bep.business.dto;
 
 import org.nl.hu.sie.bep.business.filesaving.EditRows;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-public class FactuurRegelRow extends Row {
+public class FactuurRegelRow implements Row {
     private String productOmschrijving;
     private double aantal;
     private double prijsPerStuk;
@@ -21,7 +19,7 @@ public class FactuurRegelRow extends Row {
     }
 
     public FactuurRegelRow(String productOmschrijving, double aantal, double prijsPerStuk, BtwType btwType, Date regelDatum, String eenheid) {
-        super(RowType.FACTUURREGEL);
+        super();
         this.productOmschrijving = productOmschrijving;
         this.aantal = aantal;
         this.prijsPerStuk = prijsPerStuk;

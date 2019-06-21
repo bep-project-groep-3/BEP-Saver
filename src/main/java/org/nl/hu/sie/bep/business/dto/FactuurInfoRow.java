@@ -5,13 +5,13 @@ import org.nl.hu.sie.bep.business.filesaving.EditRows;
 import java.util.Date;
 import java.util.List;
 
-public class FactuurInfoRow extends Row{
+public class FactuurInfoRow implements Row{
     private Date factuurdatum;
     private String factuurNummer;
     private List<FactuurRegelRow> factuurRegels;
 
     public FactuurInfoRow(Date factuurdatum, String factuurNummer, List<FactuurRegelRow> factuurRegels) {
-        super(RowType.FACTUUR);
+        super();
         this.factuurdatum = factuurdatum;
         this.factuurNummer = factuurNummer;
         this.factuurRegels = factuurRegels;
@@ -23,10 +23,15 @@ public class FactuurInfoRow extends Row{
 
     @Override
     public String getText() {
-        String factuurInfoString = "F" + EditRows.editDate(factuurdatum) + EditRows.editString(factuurNummer, 10) + "\n";
+        StringBuilder bld = new StringBuilder();
+        bld.append("F");
+        bld.append(EditRows.editDate(factuurdatum));
+        bld.append(EditRows.editString(factuurNummer, 10));
+        bld.append("\n");
+
         for (FactuurRegelRow factuurRegelRow : factuurRegels){
-            factuurInfoString += factuurRegelRow.getText();
+            bld.append(factuurRegelRow.getText());
         }
-        return factuurInfoString;
+        return bld.toString();
     }
 }

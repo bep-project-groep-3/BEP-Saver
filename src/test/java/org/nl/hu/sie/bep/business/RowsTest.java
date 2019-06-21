@@ -2,7 +2,6 @@ package org.nl.hu.sie.bep.business;
 
 import org.junit.jupiter.api.Test;
 import org.nl.hu.sie.bep.business.dto.*;
-import org.nl.hu.sie.bep.business.filesaving.CreateMockClasses;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,7 +26,7 @@ public class RowsTest {
                 "THalloHalloHalloHalloHalloHalloHalloHalloHalloHalloHalloHalloHalloHalloHalloHalloHalloHalloHalloHaloHalloHalloHalloHalloo\n"
                         + "THalloHallo                                                                                                              \n", langeFactuurRegel.getText());
 
-        List<FactuurRegelRow> listFactuurRegels = new ArrayList<FactuurRegelRow>();
+        List<FactuurRegelRow> listFactuurRegels = new ArrayList<>();
         listFactuurRegels.add(factuurRegel);
         listFactuurRegels.add(factuurRegel);
 
@@ -35,7 +34,7 @@ public class RowsTest {
         assertEquals("F20061912345     \nRDit is een productomschrijving                              0010000001212200619euro  \n" +
                 "RDit is een productomschrijving                              0010000001212200619euro  \n", factuur.getText());
 
-        List<FactuurInfoRow> listFacturen = new ArrayList<FactuurInfoRow>();
+        List<FactuurInfoRow> listFacturen = new ArrayList<>();
         listFacturen.add(factuur);
 
         KlantRow klant = new KlantRow("Hans Anders", "Mvr.", "Brigitte", "Le", "Blanc", "Sikkel", "29", "6026DH", "Maarheeze", "12345678", "NL18RABO0011", "123456", listFacturen);
@@ -43,7 +42,7 @@ public class RowsTest {
                 "F20061912345     \nRDit is een productomschrijving                              0010000001212200619euro  \n" +
                 "RDit is een productomschrijving                              0010000001212200619euro  \n", klant.getText());
 
-        List<KlantRow> klanten = new ArrayList<KlantRow>();
+        List<KlantRow> klanten = new ArrayList<>();
         klanten.add(klant);
 
         BedrijfRow bedrijfRow = new BedrijfRow("Bedrijf 1", "Hardenbroek", "84", "3452NJ", "Vleuten", "1234567890123", "NL11RABO12345", "1234567890", klanten);

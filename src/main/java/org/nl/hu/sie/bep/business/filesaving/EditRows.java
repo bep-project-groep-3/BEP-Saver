@@ -25,12 +25,11 @@ public class EditRows {
 
     public static String editDate(Date date) {
         DateFormat dateFormat = new SimpleDateFormat("ddMMyy");
-        String strDate = dateFormat.format(date);
-        return strDate;
+        return dateFormat.format(date);
     }
 
     public static List<String> knipProductomschrijving(String productOmschrijving) {
-        List<String> listProductomschrijving = new ArrayList<String>();
+        List<String> listProductomschrijving = new ArrayList<>();
         if (productOmschrijving.length() <= 60) {
             listProductomschrijving.add(editString(productOmschrijving, 60));
             return listProductomschrijving;

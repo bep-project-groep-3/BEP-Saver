@@ -29,9 +29,10 @@ public class CreateFile {
         try {
             File file = new File("C:\\Users\\Brigitte\\Desktop\\Files\\factuurgegevens " + maand + ".txt");
 
-            if (!file.exists()) {
-                file.createNewFile();
+            if (!file.exists() && !file.createNewFile()) {
+                logger.warn("Het is niet gelukt om een bestand aan te maken");
             }
+
 
             try (PrintWriter pw = new PrintWriter(file)) {
 
