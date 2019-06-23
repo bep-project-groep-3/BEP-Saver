@@ -16,7 +16,7 @@ public class DoublesTest {
         assertEquals(" 000050501", editRows.editDouble(-505.01, 10));
         assertEquals(" 000501", editRows.editDouble(-5.01, 7));
         assertEquals("!05", editRows.editDouble(-105.01, 3));
-        assertEquals("“05", editRows.editDouble(-205.01, 3));
+        assertEquals("\"05", editRows.editDouble(-205.01, 3));
         assertEquals("#05", editRows.editDouble(-305.01, 3));
         assertEquals("$05", editRows.editDouble(-405.01, 3));
         assertEquals("%05", editRows.editDouble(-505.01, 3));
