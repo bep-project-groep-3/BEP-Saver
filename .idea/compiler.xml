@@ -6,8 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="BEP-Saver" />
         <module name="BEP Project" />
+        <module name="BEP-Saver" />
+        <module name="businessSaver" />
       </profile>
     </annotationProcessing>
   </component>

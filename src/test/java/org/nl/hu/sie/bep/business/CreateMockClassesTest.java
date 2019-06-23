@@ -6,15 +6,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CreateMockClassesTest {
 
-    @Test
-    public void testCreateMockClasses() {
-        // Setup
-        final String expectedResult = CreateMockClasses.createMockClasses().getText();
+  @Test
+  public void testCreateMockClasses() {
+    // Setup
+    final String expectedResult = CreateMockClasses.createMockClasses().getText();
 
-        // Run the test
-        final String result = CreateMockClasses.createMockClasses().getText();
+    // Run the test
+    final String result = CreateMockClasses.createMockClasses().getText();
 
-        // Verify the results
-        assertEquals(expectedResult, result);
-    }
+    // Verify the results
+    assertEquals(expectedResult, result);
+  }
 }
