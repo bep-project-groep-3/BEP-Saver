@@ -1,5 +1,6 @@
 package org.nl.hu.sie.bep.business.filesaving;
 
+import org.nl.hu.sie.bep.business.dto.BedrijfRow;
 import org.nl.hu.sie.bep.business.exceptions.FileCreateException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,16 +18,16 @@ public class CreateFile {
         return new DateFormatSymbols().getMonths()[monthIndex - 1];
     }
 
-    public static void createFile(String[] args) throws FileCreateException{
-        if (args.length == 0) {
-            System.out.println("Er is geen maand ingevuld");
+    public static void createFile(int maand, BedrijfRow bedrijfRow) throws FileCreateException{
+        if (maand < 0 || maand > 11) {
+            System.out.println("Er is geen geldige maand ingevuld");
             return;
         }
 
-        String maand = getMonthName(Integer.parseInt(args[0]));
+        String maandString = getMonthName(maand);
 
         try {
-            File file = new File(maand + ".txt");
+            File file = new File(maandString + ".txt");
 
             if (!file.exists() && !file.createNewFile()) {
                 logger.warn("Het is niet gelukt om een bestand aan te maken");
@@ -34,7 +35,7 @@ public class CreateFile {
 
             try (PrintWriter pw = new PrintWriter(file)) {
 
-                pw.println(CreateMockClasses.createMockClasses().getText());
+                pw.println(bedrijfRow.getText());
                 pw.flush();
             }
 
@@ -45,9 +46,5 @@ public class CreateFile {
                 IOException e) {
             throw new FileCreateException("Lukt niet om een bestand aan te maken", e);
         }
-    }
-
-    public static void main(String[] args) throws FileCreateException {
-        createFile(args);
     }
 }
