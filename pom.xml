@@ -62,7 +62,17 @@
         </plugin>
       </plugins>
     </pluginManagement>
-	<extensions>
+      <plugins>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <configuration>
+                  <source>7</source>
+                  <target>7</target>
+              </configuration>
+          </plugin>
+      </plugins>
+      <extensions>
 		<extension>
 			<groupId>io.packagecloud.maven.wagon</groupId>
 			<artifactId>maven-packagecloud-wagon</artifactId>
