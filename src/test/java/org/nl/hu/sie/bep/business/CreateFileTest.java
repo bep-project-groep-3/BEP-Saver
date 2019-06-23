@@ -8,6 +8,6 @@ public class CreateFileTest {
 
     @Test
     public void test() throws FileCreateException {
-       CreateFile.createFile(new String[] { "8" });
+       CreateFile.createFile(8, CreateMockClasses.createMockClasses());
     }
 }
