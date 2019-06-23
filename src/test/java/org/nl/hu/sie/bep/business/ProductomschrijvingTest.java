@@ -18,8 +18,8 @@ public class ProductomschrijvingTest {
 
         EditRows editRows = new EditRows();
 
-        String sixtyCharacters = "Hallo, dit is een string van 60 karakters. Lang zeg…!!!!!!!!";
-        String sixtyOneCharacters = "Hallo, dit is een string van 60 karakters. Lang zeg…!!!!!!!!" + "!";
+        String sixtyCharacters = "Hallo, dit is een string van 60 karakters. Lang zeg...!!!!!!";
+        String sixtyOneCharacters = "Hallo, dit is een string van 60 karakters. Lang zeg...!!!!!!" + "!";
         String oneHundredTwentyCharacters = sixtyCharacters + sixtyCharacters;
         String twoHundredCharacters = sixtyCharacters + sixtyCharacters + sixtyCharacters + "!!!!!!!!!!!!!!!!!!!!";
 
