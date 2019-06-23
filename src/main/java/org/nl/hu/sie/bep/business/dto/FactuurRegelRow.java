@@ -2,7 +2,9 @@ package org.nl.hu.sie.bep.business.dto;
 
 import org.nl.hu.sie.bep.business.filesaving.EditRows;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class FactuurRegelRow implements Row {
     private String productOmschrijving;
@@ -36,8 +38,28 @@ public class FactuurRegelRow implements Row {
             return stringBuilder.toString();
         }
 
-        TekstRow tekstRow = new TekstRow(productOmschrijving);
-        stringBuilder.append(tekstRow.getText());
+        stringBuilder.append(getTextRows(productOmschrijving));
         return stringBuilder.toString();
     }
+
+    public String getTextRows(String productOmschrijving) {
+        List<String> regels = new ArrayList<>();
+        List<String> productOmschrijvingStrings = EditRows.knipProductomschrijving(productOmschrijving);
+
+        for (int i = 1; i < productOmschrijvingStrings.size(); i++) {
+             regels.add(addMultipleTextRows(productOmschrijvingStrings.get(i)));
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (String string : regels) {
+
+            stringBuilder.append(string);
+        }
+        return stringBuilder.toString();
+    }
+
+    private String addMultipleTextRows(String row) {
+        return "T" + row + "\n";
+    }
+
 }
