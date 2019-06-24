@@ -18,7 +18,6 @@ import static org.junit.Assert.assertEquals;
 public class RowsTest {
 
   @Test
-  @Disabled
   public void testStrings() throws ParseException {
     SimpleDateFormat format = new SimpleDateFormat("ddMMyy");
     Date date = format.parse("200619");
@@ -62,6 +61,7 @@ public class RowsTest {
 
     KlantRow klant = new KlantRow();
     klant.setBedrijfsnaam("Hans Anders");
+    klant.setPostcode("6026DH");
     klant.setAanhef("Mvr.");
     klant.setVoornaam("Brigitte");
     klant.setTussenvoegsel("Le");

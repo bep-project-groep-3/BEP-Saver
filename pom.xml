@@ -132,18 +132,18 @@
         <dependency>
             <groupId>org.nl.hu.sie.bep.iefgenerator</groupId>
             <artifactId>iefgenerator</artifactId>
-            <version>1.2-SNAPSHOT</version>
+            <version>1.3-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
     <distributionManagement>
         <repository>
-            <id>packagecloud-AtillaBosma</id>
-            <url>packagecloud+https://packagecloud.io/AtillaBosma/backendprogramming</url>
+            <id>packagecloud-Brigitte</id>
+            <url>packagecloud+https://packagecloud.io/Brigitte/BEP-Saver</url>
         </repository>
         <snapshotRepository>
-            <id>packagecloud-AtillaBosma</id>
-            <url>packagecloud+https://packagecloud.io/AtillaBosma/backendprogramming</url>
+            <id>packagecloud-Brigitte</id>
+            <url>packagecloud+https://packagecloud.io/Brigitte/BEP-Saver</url>
         </snapshotRepository>
     </distributionManagement>
 </project>
