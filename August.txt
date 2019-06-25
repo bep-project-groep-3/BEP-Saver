@@ -1,0 +1,9 @@
+BBedrijf 1                                                   Hardenbroek                                                 84        3452NJVleuten             1234567890123NL11RABO12345                                                   1234567890
+KHans Anders                             Mvr.  Brigitte            Le     Blanc                                   Sikkel                                                      29        1234ABMaarheeze           12345678     NL18RABO0011                                                    123456    
+F23061912345     
+RDit is een productomschrijving                              001000000121230619euro  
+REen productomschrijving                                     001000000121230619euro  
+KAlbert Heijn                            Dhr.  Mark                de     Wit                                     Sikkel                                                      29        1234ABMaarheeze           12345478     NL18RABO33011                                                   123455    
+F23061912377     
+REen korte productomschrijving                               001000000121230619euro  
+
